@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server'
 
+// API 라우트를 동적으로 렌더링하도록 설정
+export const dynamic = 'force-dynamic'
+
 export async function GET() {
   try {
     const accessToken = process.env.LINKEDIN_ACCESS_TOKEN

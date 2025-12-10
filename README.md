@@ -232,6 +232,14 @@ Vercel에 배포할 때는 Vercel 대시보드에서 환경 변수를 설정해�
 
 2. **일반적인 문제들**
 
+   **Dynamic Server Usage 에러:**
+   ```
+   "Dynamic server usage: Page couldn't be rendered statically because it used `request.url`"
+   ```
+   - **원인**: Next.js가 API 라우트를 정적으로 렌더링하려고 시도
+   - **해결**: API 라우트 파일에 `export const dynamic = 'force-dynamic'` 추가 (이미 적용됨)
+   - 모든 API 라우트는 동적 렌더링이 필요하므로 이 설정이 포함되어 있습니다
+
    **TypeScript 에러:**
    ```bash
    # 로컬에서 빌드 테스트
@@ -243,7 +251,7 @@ Vercel에 배포할 때는 Vercel 대시보드에서 환경 변수를 설정해�
    - Production, Preview, Development 환경 모두에 설정되었는지 확인
 
    **Node.js 버전 문제:**
-   - `package.json`에 `engines` 필드 추가:
+   - `package.json`에 `engines` 필드 추가 (이미 적용됨):
    ```json
    "engines": {
      "node": ">=18.0.0"
