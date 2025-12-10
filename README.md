@@ -162,6 +162,66 @@ social/
 └── tsconfig.json                 # TypeScript 설정
 ```
 
+## 🚀 Vercel 배포
+
+### 환경 변수 설정
+
+Vercel에 배포할 때는 Vercel 대시보드에서 환경 변수를 설정해야 합니다:
+
+1. **Vercel 프로젝트로 이동**
+   - [Vercel Dashboard](https://vercel.com/dashboard)에 로그인
+   - 배포한 프로젝트 선택
+
+2. **환경 변수 추가**
+   - 프로젝트 설정 → **Environment Variables** 메뉴 클릭
+   - 아래 환경 변수들을 추가:
+
+#### 필수 환경 변수
+
+**Instagram API:**
+- `INSTAGRAM_ACCESS_TOKEN` - Instagram Access Token
+- `INSTAGRAM_USER_ID` - Instagram User ID
+
+**X (Twitter) API (선택):**
+- `X_BEARER_TOKEN` - X Bearer Token (권장)
+- 또는 `X_API_KEY` + `X_API_SECRET` - OAuth 2.0 사용 시
+
+**LinkedIn API (선택):**
+- `LINKEDIN_ACCESS_TOKEN` - LinkedIn Access Token
+
+**Facebook API (선택):**
+- `FACEBOOK_ACCESS_TOKEN` - Facebook Access Token
+- `FACEBOOK_APP_ID` - Facebook App ID (선택)
+- `FACEBOOK_APP_SECRET` - Facebook App Secret (선택)
+
+3. **환경 선택**
+   - 각 환경 변수에 대해 적용할 환경 선택:
+     - **Production** - 프로덕션 배포에 사용
+     - **Preview** - 프리뷰 배포에 사용
+     - **Development** - 개발 환경에 사용
+
+4. **재배포**
+   - 환경 변수를 추가한 후 **Redeploy** 버튼을 클릭하여 변경사항 적용
+
+### 배포 후 확인
+
+배포가 완료되면 각 API 엔드포인트를 테스트하여 환경 변수가 제대로 설정되었는지 확인하세요:
+
+- `https://your-project.vercel.app/api/instagram`
+- `https://your-project.vercel.app/api/x`
+- `https://your-project.vercel.app/api/linkedin`
+- `https://your-project.vercel.app/api/facebook`
+
+### 참고사항
+
+- 환경 변수는 배포 시점에 빌드에 포함됩니다
+- 환경 변수를 변경한 후에는 반드시 재배포해야 합니다
+- 민감한 정보는 절대 코드에 하드코딩하지 마세요
+- Vercel CLI를 사용하여 환경 변수를 설정할 수도 있습니다:
+  ```bash
+  vercel env add INSTAGRAM_ACCESS_TOKEN
+  ```
+
 ## ⚠️ 주의사항
 
 ### 보안
